@@ -57,13 +57,24 @@ def print_summary(students):
         abs = len(student.record["absent"])
         print(f"{student.name} -- Present: {pres}, Absent: {abs}")
 
-
+def count_total_days(filename):
+    date_set = set()
+    with open(filename, mode='r') as csv_file:
+        csv_reader = csv.DictReader(csv_file)
+        line_count = 0
+        for row in csv_reader:
+            if line_count != 0:
+                #student = find_student_by_id(students, row["Student ID"])
+                date_set.add(row["Class Date"])
+            line_count += 1
+    return(len(date_set))
 
 
 
 if __name__ == "__main__":
-    file = "attendance_reports_attendance-7b6d1b85-f75b-41d0-97cc-908d5ac7692d.csv"
+    file = "attendance_reports_attendance-72df1abd-938c-4d45-bb6f-da534373422d.csv"
     student_list =load_students(file)
     students = create_student_objects(student_list)
     students = count_attendance(file, students)
     print_summary(students)
+    print(f"Total class meetings: {count_total_days(file)}")

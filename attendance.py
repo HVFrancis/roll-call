@@ -2,7 +2,7 @@
 
 # a set of tools to process Roll Call Attendance reports
 
-import csv
+import csv, sys
 
 
 class Student:
@@ -54,15 +54,20 @@ def count_attendance(filename, students):
 def print_summary(students):
     for student in students:
         pres = len(student.record["present"])
-        abs = len(student.record["absent"])
-        print(f"{student.name} -- Present: {pres}, Absent: {abs}")
+        absent = len(student.record["absent"])
+        late = len(student.record["late"])
+        print(f"{student.name} -- Present: {pres}, Absent: {absent}, Late: {late}")
 
 
 
 
 
 if __name__ == "__main__":
-    file = "attendance_reports_attendance-7b6d1b85-f75b-41d0-97cc-908d5ac7692d.csv"
+    if len(sys.argv) != 2:
+        print(f"Usage: {sys.argv[0]} ROLLCALL_ATTENDANCEREPORT_FILE")
+        sys.exit(-1)
+
+    file = sys.argv[1]
     student_list =load_students(file)
     students = create_student_objects(student_list)
     students = count_attendance(file, students)

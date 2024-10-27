@@ -58,7 +58,17 @@ def print_summary(students):
         late = len(student.record["late"])
         print(f"{student.name} -- Present: {pres}, Absent: {absent}, Late: {late}")
 
-
+def count_total_days(filename):
+    date_set = set()
+    with open(filename, mode='r') as csv_file:
+        csv_reader = csv.DictReader(csv_file)
+        line_count = 0
+        for row in csv_reader:
+            if line_count != 0:
+                #student = find_student_by_id(students, row["Student ID"])
+                date_set.add(row["Class Date"])
+            line_count += 1
+    return(len(date_set))
 
 
 
@@ -68,7 +78,7 @@ if __name__ == "__main__":
         sys.exit(-1)
 
     file = sys.argv[1]
-    student_list =load_students(file)
+    student_list = load_students(file)
     students = create_student_objects(student_list)
     students = count_attendance(file, students)
     print_summary(students)

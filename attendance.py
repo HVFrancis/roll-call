@@ -13,7 +13,6 @@ class Student:
         self.record["present"] = []
         self.record["absent"] = []
         self.record["late"] = []
-        self.record["excused"] = []
 
 def find_student_by_id(students, id):
     for student in students:
@@ -47,16 +46,30 @@ def count_attendance(filename, students):
         for row in csv_reader:
             if line_count != 0:
                 student = find_student_by_id(students, row["Student ID"])
-                student.record[row["Attendance"]].append(row["Class Date"])
+                if student is not None:
+                    student.record[row["Attendance"]].append(row["Class Date"])
             line_count += 1
     return(students)
 
 def print_summary(students):
     for student in students:
         pres = len(student.record["present"])
+        late = len(student.record["late"])
+        absent = len(student.record["absent"])
+        #print(f"{student.name} -- Present: {pres}, Absent: {absent}, Late: {late}")
+        #print(f"{student.name} Absent Days {student.record['absent']}")
+        print(f"{student.name} -- Present: {pres}, Absent: {absent}, Date Last attendend: {student.record['present'][-1]}")
+
+def return_cvs(students):
+    ret_string = "Student Name, Days Present, Days Absent, Days Late, Last Date Attended\n"
+    for student in students:
+        pres = len(student.record["present"])
         absent = len(student.record["absent"])
         late = len(student.record["late"])
-        print(f"{student.name} -- Present: {pres}, Absent: {absent}, Late: {late}")
+        last_date = student.record['present'][-1]
+        student_line = f"{student.name}, {pres}, {absent}, {late}, {last_date}"
+        ret_string += student_line + "\n"
+    return ret_string
 
 def count_total_days(filename):
     date_set = set()
@@ -81,4 +94,6 @@ if __name__ == "__main__":
     student_list = load_students(file)
     students = create_student_objects(student_list)
     students = count_attendance(file, students)
-    print_summary(students)
+#    print_summary(students)
+    print(return_cvs(students))
+    print(count_total_days(file))

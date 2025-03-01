@@ -96,4 +96,4 @@ if __name__ == "__main__":
     students = count_attendance(file, students)
 #    print_summary(students)
     print(return_cvs(students))
-    print(count_total_days(file))
+#    print(count_total_days(file))

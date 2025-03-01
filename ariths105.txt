@@ -1,11 +1,12 @@
-Vincent Crabbe -- Present: 16, Absent: 0, Date Last attendend: 1991-09-27
-Draco Malfoy -- Present: 9, Absent: 7, Date Last attendend: 1991-09-25
-Gregory Goyle -- Present: 15, Absent: 2, Date Last attendend: 1991-09-27
-Ron Weasley -- Present: 18, Absent: 1, Date Last attendend: 1991-09-27
-Dean Thomas -- Present: 14, Absent: 2, Date Last attendend: 1991-09-24
-Hermoine Granger -- Present: 16, Absent: 0, Date Last attendend: 1991-09-27
-Pansy Parkinson -- Present: 17, Absent: 0, Date Last attendend: 1991-09-27
-Neville Longbottom -- Present: 16, Absent: 1, Date Last attendend: 1991-09-26
-Seamus Finnigan -- Present: 16, Absent: 1, Date Last attendend: 1991-09-27
-Harry Potter -- Present: 15, Absent: 3, Date Last attendend: 1991-09-27
-20
+Student Name, Days Present, Days Absent, Days Late, Last Date Attended
+Ron Weasley, 18, 1, 1, 1991-09-27
+Neville Longbottom, 16, 1, 3, 1991-09-26
+Gregory Goyle, 15, 2, 3, 1991-09-27
+Vincent Crabbe, 16, 0, 4, 1991-09-27
+Pansy Parkinson, 17, 0, 3, 1991-09-27
+Hermoine Granger, 16, 0, 4, 1991-09-27
+Seamus Finnigan, 16, 1, 3, 1991-09-27
+Harry Potter, 15, 3, 1, 1991-09-27
+Dean Thomas, 14, 2, 4, 1991-09-24
+Draco Malfoy, 9, 7, 4, 1991-09-25
+
